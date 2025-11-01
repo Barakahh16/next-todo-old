@@ -91,12 +91,13 @@ export function useTodos(userId: string | undefined) {
 
     if (!isOnline) {
       const tempTodo: Todo = {
-        id: `temp_${Date.now()}`,
-        ...newTodo,
-        created_at: new Date().toISOString(),
-        // removed updated_at
-      };
-      setTodos((prev) => [tempTodo, ...prev]);
+  id: `temp_${Date.now()}`,
+  ...newTodo,                    
+  created_at: new Date().toISOString(),
+  
+};
+setTodos((prev) => [tempTodo, ...prev]);
+
       if (typeof window !== 'undefined') {
         localStorage.setItem(`${STORAGE_KEY}_${userId}`, JSON.stringify([tempTodo, ...todos]));
       }
